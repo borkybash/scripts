@@ -1,0 +1,5 @@
+#!/bin/sh
+# btc: fetches current bitcoin price
+
+btcapi="https://api.coindesk.com/v1/bpi/currentprice.json"
+curl -s $btcapi | jq .bpi.USD.rate_float
