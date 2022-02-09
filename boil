@@ -1,0 +1,45 @@
+#!/bin/sh
+# boil: print out boilerplate code and text
+# best used in vim using the command ':.!boil <option>'
+
+# Print html template
+print_html() {
+  printf '<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blank Template Title</title>
+
+  <!-- external CSS links -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <h1>Blank Template</h1>
+</body>
+</html>\n'
+}
+
+# Print lorem ipsum short sentence.
+print_lorem() {
+  printf 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n'
+}
+
+# Parses arguments for option flags
+get_opts() {
+  for opt in "$@"; do
+    case $opt in
+    -h | --html)
+      print_html;;
+    -l | --lorem)
+      print_lorem;;
+    esac
+  done
+}
+
+main() {
+  get_opts "$@"
+}
+
+main "$@"
