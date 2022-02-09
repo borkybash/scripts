@@ -1,0 +1,4 @@
+#!/bin/bash
+# ppath: pretty print PATH variable
+
+echo -e "${PATH//:/\\n}"
