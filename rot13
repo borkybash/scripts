@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+# rot13: basic ROT13 (rotate by 13) cipher
+
+import sys
+
+# Set constants lists
+ALPHA1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]
+ALPHA2 = ["n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+# Rotate any alpha letter by 13 positions
+def rotate(i, letter):
+    letter = letter.lower()
+    if letter in ALPHA1:
+        return ALPHA2[ALPHA1.index(letter)]
+    elif letter in ALPHA2:
+        return ALPHA1[ALPHA2.index(letter)]
+    else:
+        return letter
+
+
+# Get command line arguments and convert to string
+input_text = " ".join(sys.argv[1:])
+
+# Loop through each character and rotate it
+output = ""
+for i, letter in enumerate(input_text):
+    if letter.isupper():
+        output += rotate(i, letter).upper()
+    else:
+        output += rotate(i, letter)
+
+
+print(output)
